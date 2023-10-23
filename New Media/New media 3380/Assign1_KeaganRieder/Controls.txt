@@ -1,0 +1,42 @@
+KeyBindings
+    
+    > Color keys
+        >> red: r
+            >>> decrease: r + [
+            >>> increase: r + ]
+        >> green: g
+            >>> decrease: g + [
+            >>> increase: g + ]
+        >> blue: b
+            >>> decrease: b + [
+            >>> increase: b + ]
+        >> alpha: a
+            >>> decrease: a + [
+            >>> increase: a + ]
+        >> randomize: c
+        >> set brush to white: t
+        >> set brush to grey: h
+        >> set brush to black: n
+
+    > brush keys
+        >> brush size:
+            >>> increase: s + up
+            >>> decrease: s + down
+        >> scatter chance:
+            >>> increase: w + up
+            >>> decrease: w + down
+
+        >> Default Brush: 0
+        >> Scatter Brush: 1      
+        >> Random color Scatter Brush: 2
+        >> Gradient brush: 3
+
+        >> draw: left button
+        >> Erase: right button
+
+    > save/loading
+        >> save drawing: x
+
+    > other controls
+        >reset drawing: l + 0
+        >reset drawing to stary space: l + 1
