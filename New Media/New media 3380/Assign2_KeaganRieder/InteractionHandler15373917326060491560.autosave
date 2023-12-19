@@ -1,0 +1,58 @@
+/* 
+###########################################################################################
+  File Summary
+  >> conatains functions which handle checking and executing interaction 
+###########################################################################################
+*/
+
+//interaction varibles
+private boolean saving = false;
+//keyBinding
+private char spawnCarKeybinding = 'v';
+private char spawnCloudKeybinding = 'c';
+private char clearCloudsKeybinding = 'x';
+private char turnPowerOff = 'o';
+private char turnPowerOn = 'p';
+private char save = 's';
+private char screenShot = 'a';
+private char switchToDay = 'd';
+private char switchToNight = 'n';
+//interaction functions
+
+void CheckForInteraction(){
+  
+ if(keyPressed){
+      if(key == spawnCarKeybinding){
+        if(!isDay){
+          SpawnCar();
+        } 
+      }
+      else if(key == spawnCloudKeybinding){
+        SpawnCloud();
+      }
+      else if(key == clearCloudsKeybinding){
+        totalClouds = 0;
+        cloudXCords.clear();
+        cloudYCords.clear();
+        cloudSpeed.clear();
+      }
+      else if(key == save){
+        saving = !saving;
+      }
+      else if(key == screenShot){
+        TakeScreenShot();
+      }
+      else if(key == turnPowerOn){
+        powerOutage = false;
+      }
+      else if(key == turnPowerOff){
+        powerOutage = true;
+      }
+      else if(key == switchToDay){
+        isDay = true;
+      }
+      else if (key == switchToNight) {
+        isDay = false;
+      }
+    }
+}

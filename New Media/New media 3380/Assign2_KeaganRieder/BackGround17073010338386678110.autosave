@@ -1,0 +1,136 @@
+dd/* 
+###########################################################################################
+  File Summary
+  >> contains the functions that utilize functions defined in the 
+  other background files to create an animated city scape background
+  >> it also conatins function taht allow the user to interact with
+  the background
+###########################################################################################
+*/
+
+//Background varibles
+/*
+  time represnts the scenes time
+  time = 0 is midnight
+  time = 12 is midDay
+*/
+int time = 0;
+int timeChangeDelay = 0;
+int updateDelay = 0;
+
+//function to draw the inital background
+void InitalizeBackGround(){
+  noStroke();
+  noCursor();
+  InitalizeSky();
+  InitalizeCitySilhouette();
+  carYCords = horizenLine - 10;
+}
+
+//function draws background
+void DrawBackGround(){
+  DrawSky();
+  DrawBiudlings();
+  DrawLights();
+  DrawRoad();
+  DrawOcean(); 
+
+  //things requiring slight delay
+  if(updateDelay == 5){
+    switchTimes();
+    updateDelay = 0;
+  }
+  updateDelay++;
+}
+
+//Background functions
+
+void DrawRoad(){
+  fill(#111112);
+  rect(0, horizenLine, width, 10);
+}
+
+void DrawOcean(){
+  int depth = 75;
+  int size = 20;
+  
+  for (int y = horizenLine; y < height; y+=size) {
+    fill(11,33,75,depth);
+    rect(0, y , width, size);
+    depth += 25;
+  }
+}
+
+void switchTimes(){
+  println(timeChangeDelay);
+  if(timeChangeDelay != 7){
+    timeChangeDelay++;
+  }
+
+  //check time
+  if(isDay){
+    //swaping color pallats from night to day
+    //morning pallate
+    if(time == 2){
+      biuldingColor = color(23,24,31);
+      lightColor = color(214,204,13);
+      skyColor = color(211,119,77);
+      starColor = color(255);
+      carColor = color(255);
+    }
+    //between pallate
+    else if (time == 4) {
+      biuldingColor = color(39,37,77);
+      lightColor = biuldingColor;
+      skyColor = color(211,173,77);
+      starColor = skyColor;
+      carColor = biuldingColor;
+    }
+    //noon pallate
+    else if (time == 6) {
+      biuldingColor = color(20,50,64);
+      lightColor = biuldingColor;
+      skyColor = color(77,211,201);
+      starColor = skyColor;
+      carColor = biuldingColor;
+    }
+    if(time != 6 && timeChangeDelay >= 5){
+      time ++;
+      timeChangeDelay =0;
+    }
+    
+  }
+  else{    
+    //swaping color pallats from  day to night
+    //afternoon pallate
+    if(time == 6){
+      biuldingColor = color(83,56,103);
+      lightColor = biuldingColor;
+      skyColor = color(110,68,188);
+      starColor = skyColor;
+      carColor = biuldingColor;
+    }
+    //dusk pallate
+    else if (time == 4) {
+      biuldingColor = color(32,27,39);
+      lightColor = color(214,204,13);
+      skyColor = color(68,44,100);
+      starColor = color(255);
+      carColor = color(255);
+    }
+    //midnight pallate
+    else if (time == 0) {
+      biuldingColor = color(32,27,39);
+      lightColor = color(214,204,13);
+      skyColor = color(18,8,46);
+      starColor = color(255);
+      carColor = color(255);
+    }
+
+    //moving time
+    if(time != 0 && timeChangeDelay == 7){
+      time --;
+      timeChangeDelay = 0;
+    }
+  }
+}
